@@ -16,6 +16,7 @@ import PaymentView from './components/PaymentView';
 import AccountView from './components/AccountView';
 import AuthModal from './components/AuthModal';
 import Footer from './components/Footer';
+import { STATIC_PRODUCTS } from './data/staticProducts';
 
 function MainApp() {
   const { user, token } = useAuth();
@@ -35,7 +36,7 @@ function MainApp() {
   const [loadingWishlist, setLoadingWishlist] = useState(false);
   const [wishlistIds, setWishlistIds] = useState(new Set());
 
-  // Fetch Products based on collection filter
+  // Fetch Products based on collection filter (with automatic GitHub Pages fallback)
   const fetchProducts = useCallback(async (colSlug) => {
     try {
       setLoadingProducts(true);
@@ -44,12 +45,19 @@ function MainApp() {
       if (token) headers['Authorization'] = `Bearer ${token}`;
 
       const res = await fetch(url, { headers });
+      if (!res.ok) throw new Error('API offline');
       const data = await res.json();
-      if (data.success) {
+      if (data.success && data.products) {
         setProducts(data.products);
+        return;
       }
+      throw new Error('API data empty');
     } catch (err) {
-      console.error('Fetch products error:', err);
+      // Automatic fallback for GitHub Pages (no Node backend required!)
+      const filtered = (!colSlug || colSlug === 'all')
+        ? STATIC_PRODUCTS
+        : STATIC_PRODUCTS.filter(p => p.collection_slug === colSlug);
+      setProducts(filtered);
     } finally {
       setLoadingProducts(false);
     }
