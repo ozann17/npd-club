@@ -1,0 +1,33 @@
+{
+  "name": "npd-club",
+  "version": "1.0.0",
+  "description": "NPD CLUB - Heavyweight Streetwear & Capsule Collections E-Commerce",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "server": "node server/index.js",
+    "client": "cd client && npm.cmd run dev",
+    "build": "cd client && npm.cmd run build",
+    "seed": "node server/reset-db.js",
+    "users": "node server/view-users.js",
+    "test:e2e": "node test-e2e.js"
+  },
+  "keywords": [
+    "npd-club",
+    "streetwear",
+    "clothing-store",
+    "ecommerce"
+  ],
+  "author": "NPD CLUB",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "qrcode": "^1.5.4"
+  }
+}
