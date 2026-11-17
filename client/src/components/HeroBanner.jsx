@@ -15,7 +15,7 @@ export const HERO_SLIDES = [
     titleSub: "NPD CLUB SOLUTION",
     description: "Stop overthinking your daily fit. NPD CLUB delivers functional cuts, versatile tones, and clean silhouettes designed to effortlessly elevate your everyday routine. No stress, just solid style.",
     // 👉 PATH FILE GAMBAR BANNER ANDA:
-    backgroundImage: "/banners/npd-banner-lookbook.jpg",
+    backgroundImage: "./banners/npd-banner-lookbook.jpg",
     buttonCollection: "npd-collection",
     buttonText: "NPD COLLECTION",
     theme: "light" // 'light' otomatis menyesuaikan teks menjadi Navy (#0B1F3A) agar model terlihat sangat jelas!
@@ -27,7 +27,7 @@ export const HERO_SLIDES = [
     titleMain: "NO RULES",
     titleSub: "JUST CULTURE",
     description: "Beyond trends, beyond guidelines. We don’t follow standard blueprints—we reflect the spirit, music, and raw identity of the streets.",
-    backgroundImage: "/banners/banner_1122.PNG",
+    backgroundImage: "./banners/banner_1122.PNG",
     buttonCollection: "tdb-collection",
     buttonText: "tdb '26",
     theme: "dark"
@@ -39,7 +39,7 @@ export const HERO_SLIDES = [
     titleMain: "Looking sharp?",
     titleSub: "NPD’s got your back.",
     description: "Style isn't just about what you wear—it’s how you carry yourself. NPD is here to elevate your everyday look with functional cuts, versatile tones, and clean silhouettes designed for the modern lifestyle. Whatever the room, whatever the move: Looking sharp? NPD’s got your back.",
-    backgroundImage: "/banners/sld3.jpeg",
+    backgroundImage: "./banners/sld3.jpeg",
     buttonCollection: "pickme-collection",
     buttonText: "PICK ME '26",
     theme: "dark"
@@ -54,21 +54,21 @@ export const QUICK_COLLECTIONS = [
     title: 'NPD Collection',
     slug: 'npd-collection',
     badge: 'Core Signature',
-    image: '/banners/npd.PNG',
+    image: './banners/npd.PNG',
     desc: 'Heavyweight boxy tees & iconic archival screenprints'
   },
   {
     title: 'TDB Collection',
     slug: 'tdb-collection',
     badge: 'TDB 2026',
-    image: '/banners/tdb.PNG',
+    image: './banners/tdb.PNG',
     desc: 'Breathable dual-layer mesh & relaxed transitional outerwear'
   },
   {
     title: 'Pick Me Collection',
     slug: 'pickme-collection',
     badge: 'Pick Me Gear',
-    image: '/banners/pick me.PNG',
+    image: './banners/pick me.PNG',
     desc: 'Tactical polar sherpa, balaclavas & 500 GSM loopback fleece'
   }
 ];
@@ -146,11 +146,11 @@ export default function HeroBanner({ onSelectCollection }) {
                 className="w-full h-full object-cover object-center"
               />
 
-              {/* Overlay: Disesuaikan dengan tema light/dark agar model atau gambar tetap jelas */}
+              {/* Overlay: Disesuaikan dengan tema light/dark agar model dan teks di tengah SELALU kontras & terbaca jelas */}
               {slideIsLight ? (
-                <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-white/10 backdrop-blur-[0.5px]" />
+                <div className="absolute inset-0 bg-white/65 sm:bg-white/55 backdrop-blur-[1px]" />
               ) : (
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-[#0B1F3A]/70 to-[#0B1F3A]/50 backdrop-blur-[0.5px]" />
+                <div className="absolute inset-0 bg-[#0B1F3A]/75 backdrop-blur-[1px]" />
               )}
             </div>
           );

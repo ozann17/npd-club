@@ -43,37 +43,37 @@ export default function Navbar({ onOpenBottomMenu, currentView, setCurrentView, 
 
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
           
-          {/* Left: Quick Desktop Collection links */}
-          <div className="flex items-center gap-6 z-10">
-            <nav className="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-[#0B1F3A]">
+          {/* Left: Quick Desktop Collection links (Responsive & No Overlap) */}
+          <div className="flex-1 flex items-center gap-2 sm:gap-4 xl:gap-6 z-10 min-w-0">
+            <nav className="hidden lg:flex items-center gap-3 xl:gap-5 text-[11px] xl:text-xs font-bold uppercase tracking-wider text-[#0B1F3A]">
               <button
                 onClick={() => {
                   setSelectedCollection('all');
                   setCurrentView('home');
                 }}
-                className={`hover:opacity-70 transition-opacity ${currentView === 'home' && selectedCollection === 'all' ? 'underline underline-offset-8 decoration-2' : ''}`}
+                className={`hover:opacity-70 transition-opacity whitespace-nowrap ${currentView === 'home' && selectedCollection === 'all' ? 'underline underline-offset-8 decoration-2' : ''}`}
               >
                 Home
               </button>
               <button
                 onClick={() => handleSelectCollection('npd-collection')}
-                className={`hover:opacity-70 transition-opacity ${currentView === 'collection' && selectedCollection === 'npd-collection' ? 'underline underline-offset-8 decoration-2' : ''}`}
+                className={`hover:opacity-70 transition-opacity whitespace-nowrap ${currentView === 'collection' && selectedCollection === 'npd-collection' ? 'underline underline-offset-8 decoration-2' : ''}`}
               >
                 NPD Collection
               </button>
               <button
                 onClick={() => handleSelectCollection('tdb-collection')}
-                className={`hover:opacity-70 transition-opacity ${currentView === 'collection' && selectedCollection === 'tdb-collection' ? 'underline underline-offset-8 decoration-2' : ''}`}
+                className={`hover:opacity-70 transition-opacity whitespace-nowrap ${currentView === 'collection' && selectedCollection === 'tdb-collection' ? 'underline underline-offset-8 decoration-2' : ''}`}
               >
                 TDB Collection
               </button>
               <button
                 onClick={() => handleSelectCollection('pickme-collection')}
-                className={`hover:opacity-70 transition-opacity ${currentView === 'collection' && selectedCollection === 'pickme-collection' ? 'underline underline-offset-8 decoration-2' : ''}`}
+                className={`hover:opacity-70 transition-opacity whitespace-nowrap ${currentView === 'collection' && selectedCollection === 'pickme-collection' ? 'underline underline-offset-8 decoration-2' : ''}`}
               >
-                Pick Me Collection
+                Pick Me
               </button>
             </nav>
 
@@ -82,8 +82,8 @@ export default function Navbar({ onOpenBottomMenu, currentView, setCurrentView, 
             </div>
           </div>
 
-          {/* Center: Brand Logo (Style Font Bubble & Tepat di Tengah Header) */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-auto z-20">
+          {/* Center: Brand Logo (Tepat di Tengah & Bebas Tabrakan) */}
+          <div className="shrink-0 px-2 sm:px-4 text-center pointer-events-auto z-20">
             <button
               onClick={() => {
                 setSelectedCollection('all');
@@ -92,22 +92,22 @@ export default function Navbar({ onOpenBottomMenu, currentView, setCurrentView, 
               className="inline-flex items-center gap-2 group transition-transform active:scale-95"
               aria-label="Kembali ke Beranda NPD CLUB"
             >
-              <span className="font-['Rubik_Bubbles',cursive] text-2xl sm:text-3xl md:text-4xl text-[#0B1F3A] group-hover:text-[#163259] tracking-wider transition-colors drop-shadow-[0_2px_4px_rgba(11,31,58,0.18)]">
+              <span className="font-['Rubik_Bubbles',cursive] text-2xl sm:text-3xl md:text-4xl text-[#0B1F3A] group-hover:text-[#163259] tracking-wider transition-colors drop-shadow-[0_2px_4px_rgba(11,31,58,0.18)] whitespace-nowrap">
                 ✦ NPD CLUB
               </span>
             </button>
           </div>
 
-          {/* Right: Currency, Wishlist, Cart, Account (strictly NO search bar!) */}
-          <div className="flex items-center gap-3 sm:gap-5 z-10 ml-auto">
-            <span className="hidden sm:inline-block text-[11px] font-bold tracking-wider text-gray-600 bg-[#F2F4F7] px-2.5 py-1">
+          {/* Right: Currency, Wishlist, Cart, Account */}
+          <div className="flex-1 flex items-center justify-end gap-2 sm:gap-4 z-10 min-w-0">
+            <span className="hidden xl:inline-block text-[11px] font-bold tracking-wider text-gray-600 bg-[#F2F4F7] px-2.5 py-1">
               IDR 🇮🇩
             </span>
 
             {/* Wishlist */}
             <button
               onClick={() => setCurrentView('wishlist')}
-              className="relative p-2 text-[#0B1F3A] hover:bg-[#F2F4F7] transition-colors rounded-none"
+              className="relative p-2 text-[#0B1F3A] hover:bg-[#F2F4F7] transition-colors rounded-full"
               title="Wishlist"
               aria-label="Wishlist"
             >
@@ -122,7 +122,7 @@ export default function Navbar({ onOpenBottomMenu, currentView, setCurrentView, 
             {/* Cart */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2 text-[#0B1F3A] hover:bg-[#F2F4F7] transition-colors rounded-none"
+              className="relative p-2 text-[#0B1F3A] hover:bg-[#F2F4F7] transition-colors rounded-full"
               title="Keranjang Belanja"
               aria-label="Keranjang"
             >
@@ -138,17 +138,18 @@ export default function Navbar({ onOpenBottomMenu, currentView, setCurrentView, 
             {user ? (
               <button
                 onClick={() => setCurrentView('account')}
-                className="hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0B1F3A] hover:bg-[#F2F4F7] px-3 py-1.5 transition-colors border border-gray-200"
+                className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#0B1F3A] hover:bg-[#F2F4F7] px-2.5 sm:px-3 py-1.5 transition-colors border border-gray-200 rounded"
               >
                 <User className="w-3.5 h-3.5" />
-                <span>{user.name.split(' ')[0]}</span>
+                <span className="max-w-[70px] truncate">{user.name.split(' ')[0]}</span>
               </button>
             ) : (
               <button
                 onClick={() => promptLogin()}
-                className="hidden sm:inline-flex items-center text-xs font-bold uppercase tracking-wider bg-[#0B1F3A] text-white hover:bg-[#163259] px-3.5 py-1.5 transition-colors"
+                className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-[#0B1F3A] text-white hover:bg-[#163259] px-2.5 sm:px-3.5 py-1.5 transition-colors rounded shadow-sm"
               >
-                Log In
+                <User className="w-3.5 h-3.5 sm:hidden" />
+                <span className="hidden sm:inline">Log In</span>
               </button>
             )}
           </div>
